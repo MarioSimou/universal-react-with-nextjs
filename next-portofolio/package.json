@@ -1,0 +1,25 @@
+{
+  "name": "universal-react-with-nextjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next -p 4000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarioSimou/universal-react-with-nextjs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarioSimou/universal-react-with-nextjs/issues"
+  },
+  "homepage": "https://github.com/MarioSimou/universal-react-with-nextjs#readme",
+  "dependencies": {
+    "next": "^9.1.4",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
