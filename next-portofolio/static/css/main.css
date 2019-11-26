@@ -1,0 +1,11 @@
+:root {
+    --primary: indigo;
+    --secondary: #f0f0f0;
+}
+
+body {
+    margin: 0;
+    font-size: 110%;
+    background: var(--secondary);
+    font-family: 'Roboto', sans-serif;
+}
