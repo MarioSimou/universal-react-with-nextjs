@@ -8,7 +8,7 @@ fetch('/api/v1/logout', {method: 'POST', headers: {'Content-Type': 'application/
 .then(({success,message}) => {
 	if(!success) return window.alert(message)
 	setState({user: {}})
-	router.push('/')
+	router.push('/signin')
 })
 .catch(e => window.alert(r))
 

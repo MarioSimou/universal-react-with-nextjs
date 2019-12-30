@@ -17,9 +17,11 @@ const App = ({Component, pageProps, title, user}) => {
 		)
 }
 
-App.getInitialProps = async ({Component: {name:title}, ctx: {req}}) => {
+App.getInitialProps = async ({Component: {name:title}, ctx: {req, res}, router}) => {
 	if(req && req.signedCookies) {
 		const {uid} = req.signedCookies
+		if(title === 'Profile' && !uid) return res.redirect(302, '/signin')
+
 		const url = new URL(`users/${uid}`, process.env.USERS_API_DOMAIN)
 		const user = await fetch(url).then(r => r.json())
 		return {title, user}
