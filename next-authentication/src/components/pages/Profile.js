@@ -1,10 +1,8 @@
-import Layout from '../Layout'
+import {useState} from '../App'
+
 const Profile = () => {
-	return (
-		<Layout title="Profile">
-			<p>a json of the user profile</p>
-		</Layout>
-	)
+	const {state:{user}} = useState()
+	return (<p>{JSON.stringify(user,null,2)}</p>)
 }
 
 export default Profile

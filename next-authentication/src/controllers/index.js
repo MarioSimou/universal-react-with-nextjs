@@ -1,9 +1,9 @@
 import expressPromiseRouter from 'express-promise-router'
-
+import login from './login'
+import logout from './logout'
 const router = expressPromiseRouter()
 
-router.get('/ping', (req,res) => {
-	res.send('pong')
-})
+router.post('/login', login)
+router.post('/logout', logout)
 
 export default router

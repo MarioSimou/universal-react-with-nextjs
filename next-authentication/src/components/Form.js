@@ -1,15 +1,25 @@
-const Form = ({fields}) => {
+const initialState = fields => fields.reduce((a,[{name,value}]) => ({...a, [name]:{value: value || '',touched: false}}),{})
+const onChangeField = ({values,setValues}) => ({target: {value, name}}) => setValues({...values, [name]: {value, touched:true}})
+const onSubmitExtend= fn => state => e => {
+	e.preventDefault()
+	// add some validating if is needed
+	const values = Object.entries(state).reduce((a,[name,{value}])=> ({...a,[name]:value}), {})
+	return fn(values)
+}
+
+const Form = ({fields, onSubmit}) => {
+	const [values,setValues] = React.useState(initialState(fields))
 	return (
 		<form className="form">
-			{fields.map(([name,Field]) => {
+			{fields.map(([{name},Field])=> {
 				return (
 					<div className="form-group" key={name}>
-						<Field name={name} className="form-input" />
+						<Field className="form-input" name={name} onChange={onChangeField({values,setValues})} />
 					</div>
 				)
 			})}
 			<div className="form-group">
-				<button className="btn">Submit</button>
+				<button className="btn" onClick={onSubmitExtend(onSubmit)(values)}>Submit</button>
 			</div>
 		<style jsx>{`
 			.form {
@@ -24,6 +34,7 @@ const Form = ({fields}) => {
 			form > .form-group > .form-input {
 				width: 100%;
 				box-sizing: border-box;
+				padding: 0.25rem;
 			}
 			.form > .form-group > .btn {
 				width: 100%;
